@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PathWise | Profile</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav>
+
+    <div class="logo">
+        Path<span>Wise</span>
+    </div>
+
+    <div class="links">
+        <a href="careerindex.html">Dashboard</a>
+        <a href="careeroptions.html">Careers</a>
+        <a href="opportunities.html">Opportunities</a>
+        <a href="profile.html">Profile</a>
+    </div>
+
+</nav>
+
+
+<main class="dashboard">
+
+    <section class="welcome">
+
+        <p class="small-text">YOUR PROFILE</p>
+
+        <h1>
+            Welcome, <span id="studentName">Student.</span>
+        </h1>
+
+        <p class="intro">
+            View your PathWise account information and career progress.
+        </p>
+
+    </section>
+
+
+    <section class="actions">
+
+        <!-- Personal Information -->
+
+        <div class="action-card">
+
+            <div class="icon">👤</div>
+
+            <h2>Personal Information</h2>
+
+            <p>
+                <strong>Name:</strong>
+                <span id="name">Loading...</span>
+            </p>
+
+            <p>
+                <strong>Email:</strong>
+                <span id="email">Loading...</span>
+            </p>
+
+            <p>
+                <strong>Member Since:</strong>
+                <span id="memberSince">PathWise Member</span>
+            </p>
+
+        </div>
+
+
+        <!-- Career Information -->
+
+        <div class="action-card">
+
+            <div class="icon">🎯</div>
+
+            <h2>Career Progress</h2>
+
+            <p>
+                <strong>Current Career:</strong>
+                <span id="career">Loading...</span>
+            </p>
+
+            <p>
+                <strong>Assessment:</strong>
+                <span id="assessmentStatus">Loading...</span>
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="progress-section">
+
+        <div class="section-heading">
+
+            <p class="small-text">ACCOUNT</p>
+
+            <h2>Manage Your Account</h2>
+
+        </div>
+
+
+        <div class="progress-card">
+
+            <div>
+                <p class="label">CAREER</p>
+
+                <h3>
+                    Explore careers and opportunities
+                </h3>
+            </div>
+
+            <div>
+                <p class="label">ASSESSMENT</p>
+
+                <h3>
+                    Your quiz results are saved
+                </h3>
+            </div>
+
+            <div>
+                <p class="label">ACCOUNT</p>
+
+                <button
+                    class="secondary-button"
+                    onclick="logout()">
+                    Logout
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>© 2026 PathWise. All rights reserved.</p>
+
+</footer>
+
+
+<script>
+
+const studentId = localStorage.getItem("student_id");
+
+
+// If student is not logged in
+if (!studentId) {
+
+    window.location.href = "../frontend/login.html";
+
+}
+
+
+// Get student information
+fetch(`http://127.0.0.1:8000/students/${studentId}`)
+
+.then(response => response.json())
+
+.then(data => {
+
+    if (data.success) {
+
+        document.getElementById("name").textContent = data.name;
+
+        document.getElementById("studentName").textContent =
+            data.name;
+
+        document.getElementById("email").textContent =
+            data.email;
+
+    }
+
+})
+
+.catch(error => {
+
+    console.error("Profile error:", error);
+
+});
+
+
+// Get assessment / career
+fetch(`http://127.0.0.1:8000/assessment/${studentId}`)
+
+.then(response => response.json())
+
+.then(data => {
+
+    if (data.career) {
+
+        document.getElementById("career").textContent =
+            data.career;
+
+        document.getElementById("assessmentStatus").textContent =
+            "Completed";
+
+    } else {
+
+        document.getElementById("career").textContent =
+            "Not decided yet";
+
+        document.getElementById("assessmentStatus").textContent =
+            "Not completed";
+
+    }
+
+})
+
+.catch(error => {
+
+    console.error("Assessment error:", error);
+
+});
+
+
+// Logout
+function logout() {
+
+    localStorage.removeItem("student_id");
+
+    localStorage.removeItem("student_name");
+
+    window.location.href = "../frontend/login.html";
+
+}
+
+</script>
+
+</body>
+
+</html>
