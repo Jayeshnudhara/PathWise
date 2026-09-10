@@ -36,12 +36,11 @@ Keep it beginner-friendly and concise.
     return response.text
 
 
-career = "AI/ML Engineer"
+career = "Frontend developer"
 
 skill_gaps = [
-    "Statistics",
-    "Machine Learning",
-    "Deep Learning"
+    "react",
+    "javascript"
 ]
 
 roadmap = generate_roadmap(career, skill_gaps)

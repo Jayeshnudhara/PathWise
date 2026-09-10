@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="./styleregistration.css">
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>PathWise - Register</title>
+
+</head>
+
+
+<body>
+
+    <div class="auth-container">
+
+        <div class="auth-box">
+
+            <!-- Logo -->
+
+            <h1 class="auth-logo">
+                Path<span>Wise</span>
+            </h1>
+
+
+            <!-- Heading -->
+
+            <h2>Create Your Account</h2>
+
+            <p class="auth-text">
+                Join PathWise and start building your future.
+            </p>
+
+
+            <!-- Registration Form -->
+
+            <form>
+
+
+                <!-- =========================
+                     FULL NAME
+                ========================== -->
+
+                <div class="input-group">
+
+                    <label for="name">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- =========================
+                     CURRENTLY STUDYING
+                ========================== -->
+
+                <div class="input-group">
+
+                    <label for="studying">
+                        Currently Studying
+                    </label>
+
+                    <select
+                        id="studying"
+                        name="studying"
+                        required
+                    >
+
+                        <option value="">
+                            Select your current education
+                        </option>
+
+                        <option value="school">
+                            School
+                        </option>
+
+                        <option value="12th">
+                            12th / Higher Secondary
+                        </option>
+
+                        <option value="diploma">
+                            Diploma
+                        </option>
+
+                        <option value="undergraduate">
+                            Undergraduate
+                        </option>
+
+                        <option value="postgraduate">
+                            Postgraduate
+                        </option>
+
+                        <option value="working">
+                            Working Professional
+                        </option>
+
+                        <option value="other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- =========================
+                     PHONE NUMBER
+                ========================== -->
+
+                <div class="input-group">
+
+                    <label for="phone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="Enter your phone number"
+                        pattern="[0-9]{10}"
+                        maxlength="10"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- =========================
+                     EMAIL
+                ========================== -->
+
+                <div class="input-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- =========================
+                     PASSWORD
+                ========================== -->
+
+                <div class="input-group">
+
+                    <label for="password">
+                        Set Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Create a password"
+                        minlength="8"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- =========================
+                     CONFIRM PASSWORD
+                ========================== -->
+
+                <div class="input-group">
+
+                    <label for="confirmPassword">
+                        Confirm Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        placeholder="Confirm your password"
+                        minlength="8"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- =========================
+                     REGISTER BUTTON
+                ========================== -->
+
+                <button
+                    type="submit"
+                    class="auth-button">
+
+                    Create Account
+
+                </button>
+
+
+            </form>
+
+
+
+            <!-- =========================
+                 LOGIN LINK
+            ========================== -->
+
+            <p class="switch-text">
+
+                Already have an account?
+
+                <a href="login.html">
+                    Login
+                </a>
+
+            </p>
+
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
