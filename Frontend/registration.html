@@ -38,7 +38,7 @@
 
             <!-- Registration Form -->
 
-            <form>
+            <form id="registrationForm">
 
 
                 <!-- =========================
@@ -216,7 +216,6 @@
                 <button
                     type="submit"
                     class="auth-button">
-
                     Create Account
 
                 </button>
@@ -244,7 +243,42 @@
         </div>
 
     </div>
+<script>
+const registrationForm = document.getElementById("registrationForm");
 
+registrationForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+
+    fetch("http://127.0.0.1:8000/register", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            name: name,
+            email: email
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        if (data.success) {
+            alert("Registration successful! Please login.");
+            window.location.href = "login.html";
+        } else {
+            alert(data.message);
+        }
+
+    })
+    .catch(error => {
+        console.error("Registration error:", error);
+        alert("Unable to connect to server.");
+    });
+});
+</script>
 </body>
 
 </html>

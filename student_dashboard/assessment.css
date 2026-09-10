@@ -1,0 +1,223 @@
+```css
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f8fbf8;
+    color: #172117;
+}
+
+
+/* Navbar */
+
+nav {
+    height: 75px;
+    padding: 0 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    border-bottom: 1px solid #e8eee8;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #4f8f5b;
+}
+
+
+/* Assessment Container */
+
+.assessment-container {
+    width: 84%;
+    max-width: 900px;
+    margin: auto;
+    padding: 60px 0;
+}
+
+.header {
+    margin-bottom: 40px;
+}
+
+.small-text {
+    color: #4f8f5b;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.header h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.header p {
+    color: #687268;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+
+/* Questions */
+
+.question {
+    background: white;
+    border: 1px solid #e2eae2;
+    border-radius: 16px;
+    padding: 25px 30px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 20px rgba(40, 70, 40, 0.04);
+}
+
+.question h3 {
+    font-size: 18px;
+    margin-bottom: 18px;
+}
+
+
+/* Options */
+
+.option {
+    display: block;
+    padding: 12px 15px;
+    margin: 7px 0;
+    border-radius: 9px;
+    color: #4b554b;
+    cursor: pointer;
+}
+
+.option:hover {
+    background: #f0f7f1;
+}
+
+.option input {
+    margin-right: 10px;
+    accent-color: #4f8f5b;
+}
+
+
+/* Submit */
+
+.submit-container {
+    text-align: center;
+    margin-top: 35px;
+}
+
+button {
+    border: none;
+    background: #4f8f5b;
+    color: white;
+    padding: 14px 30px;
+    border-radius: 9px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #3f794b;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    .assessment-container {
+        width: 90%;
+        padding: 40px 0;
+    }
+
+    .header h1 {
+        font-size: 34px;
+    }
+
+    .question {
+        padding: 22px;
+    }
+}
+/* Result Page */
+
+.result-page {
+    min-height: calc(100vh - 135px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+.result-card {
+    width: 100%;
+    max-width: 650px;
+    background: white;
+    border: 1px solid #e2eae2;
+    border-radius: 22px;
+    padding: 55px;
+    text-align: center;
+    box-shadow: 0 12px 35px rgba(40, 70, 40, 0.06);
+}
+
+.result-icon {
+    font-size: 45px;
+    margin-bottom: 20px;
+}
+
+.result-card h1 {
+    font-size: 38px;
+    margin-bottom: 18px;
+}
+
+.result-description {
+    color: #687268;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.career-result {
+    background: #eef6ef;
+    border-radius: 14px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.career-result p {
+    color: #66806a;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+}
+
+.career-result h2 {
+    color: #4f8f5b;
+    font-size: 26px;
+}
+
+.result-note {
+    color: #687268;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.result-card .main-button {
+    display: inline-block;
+    background: #4f8f5b;
+    color: white;
+    padding: 13px 25px;
+    border-radius: 9px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.result-card .main-button:hover {
+    background: #3f794b;
+}

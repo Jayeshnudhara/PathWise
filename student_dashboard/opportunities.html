@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PathWise | Opportunities</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">Path<span>Wise</span></div>
+
+    <div class="links">
+        <a href="careerindex.html">Dashboard</a>
+        <a href="careeroptions.html">Careers</a>
+        <a href="opportunities.html">Opportunities</a>
+    </div>
+</nav>
+
+<main class="dashboard">
+
+    <section class="welcome">
+        <p class="small-text">OPPORTUNITIES</p>
+        <h1>Find Your Next <span>Opportunity.</span></h1>
+        <p class="intro">
+            Explore internships and opportunities that match your career interests.
+        </p>
+    </section>
+
+    <div id="opportunityContainer"></div>
+
+</main>
+
+<script>
+
+fetch("http://127.0.0.1:8000/opportunities")
+.then(response => response.json())
+.then(opportunities => {
+
+    const container = document.getElementById("opportunityContainer");
+
+    opportunities.forEach(opportunity => {
+
+        container.innerHTML += `
+            <div class="action-card">
+                <div class="icon">🚀</div>
+
+                <h2>${opportunity.title}</h2>
+
+                <p><strong>${opportunity.company}</strong></p>
+
+                <p>${opportunity.description}</p>
+
+                <p>
+                    <strong>Skills:</strong>
+                    ${opportunity.required_skills}
+                </p>
+
+                <p>
+                    <strong>Location:</strong>
+                    ${opportunity.location}
+                </p>
+            </div>
+        `;
+
+    });
+
+})
+.catch(error => console.error("Opportunities error:", error));
+
+</script>
+
+</body>
+</html>

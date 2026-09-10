@@ -1,27 +1,176 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>find your intrests and strengths through this assesment</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PathWise | Student Dashboard</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <h1>Choose Your Career</h1>
-       <button> 
-          <a href="assessment.html">
-            ------>take quiz <-------
-          </a>
-        </button>
-     <p>To Explore different career paths and discover your interests.</p>
-    and apps that are easy and enjoyable to use.</p> 
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">Path<span>Wise</span></div>
 
-    <h2>to know more about careers click below</h2>
-    <button>
-        <a href="careeroptions.html">
-            Careers
-        </a></button>
+        <div class="links">
+            <a href="#">Dashboard</a>
+            <a href="careeroptions.html">Careers</a>
+            <a href="#">Profile</a>
+        </div>
+    </nav>
 
 
+    <!-- Dashboard -->
+    <main class="dashboard">
+
+        <section class="welcome">
+
+            <p class="small-text">WELCOME BACK</p>
+
+            <h1>Welcome, <span id="studentName">Student</span>.</h1>
+
+            <p class="intro">
+                Discover your strengths, explore career opportunities,
+                and take the next step toward your future.
+            </p>
+
+        </section>
+
+
+        <!-- Main Actions -->
+        <section class="actions">
+
+            <div class="action-card">
+
+                <div class="icon">🎯</div>
+
+                <h2>Discover Your Path</h2>
+
+                <p>
+                    Take a short assessment to discover careers
+                    that match your interests and strengths.
+                </p>
+
+                <a href="assessment.html" class="main-button">
+                    Take Quiz
+                </a>
+
+            </div>
+
+
+            <div class="action-card">
+
+                <div class="icon">🗺️</div>
+
+                <h2>Explore Careers</h2>
+
+                <p>
+                    Explore different career opportunities and
+                    find out what each path requires.
+                </p>
+
+                <a href="careeroptions.html" class="secondary-button">
+                    Explore Careers
+                </a>
+
+            </div>
+
+        </section>
+        <div class="action-card">
+
+    <div class="icon">🚀</div>
+
+    <h2>Explore Opportunities</h2>
+
+    <p>
+        Discover internships and opportunities that can help you move toward your career.
+    </p>
+
+    <a href="opportunities.html" class="secondary-button">
+        View Opportunities
+    </a>
+
+</div>
+
+        <!-- Progress -->
+        <section class="progress-section">
+
+            <div class="section-heading">
+                <p class="small-text">YOUR JOURNEY</p>
+                <h2>Your Current Progress</h2>
+            </div>
+
+            <div class="progress-card">
+
+                <div>
+                    <p class="label">CURRENT CAREER</p>
+                    <h3 id="currentCareer">Loading...</h3>
+                </div>
+
+                <div>
+                    <p class="label">SKILLS</p>
+                    <h3>Complete your assessment</h3>
+                </div>
+
+                <div id="quizCard">
+                    <p class="label">NEXT STEP</p>
+                    <h3>Take the quiz →</h3>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 PathWise. All rights reserved.</p>
+    </footer>
+<script>
+    const studentId = localStorage.getItem("student_id");
+
+fetch(`http://127.0.0.1:8000/assessment/${studentId}`)
+        .then(response => response.json())
+        .then(data => {
+
+            const careerElement = document.getElementById("currentCareer");
+            const quizCard = document.getElementById("quizCard");
+
+            if (data.career) {
+                careerElement.textContent = data.career;
+
+                quizCard.innerHTML = `
+                    <div class="icon">🌱</div>
+                    <h2>Your Current Path</h2>
+                    <p>
+                        Your assessment is complete. Continue exploring
+                        opportunities that match your career direction.
+                    </p>
+                    <a href="careeroptions.html" class="main-button">
+                        Explore Careers
+                    </a>
+                `;
+
+            } else {
+                careerElement.textContent = "Not decided yet";
+            }
+        })
+        .catch(error => {
+            console.error("Error loading career:", error);
+        });
+        const studentName = localStorage.getItem("student_name");
+
+if (studentName) {
+    document.getElementById("studentName").textContent = studentName;
+}
+</script>
 </body>
 </html>
+```

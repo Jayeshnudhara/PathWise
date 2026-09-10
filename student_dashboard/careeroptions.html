@@ -1,40 +1,215 @@
+
 <!DOCTYPE html>
-<html> 
- <head>
-    <title>booming careers right now </title>
- </head>
+<html lang="en">
 
- <body>
-     <h1>letsgo earn matcha</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <div class="careers">
+    <title>PathWise | Careers</title>
 
-        <div class="career">
-            <h2>AI / ML Engineer</h2>
-            <p>Build intelligent systems using Python and Machine Learning.</p>
+    <link rel="stylesheet" href="careers.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+
+    <nav>
+
+        <div class="logo">
+            Path<span>Wise</span>
         </div>
 
-        <div class="career">
-            <h2>Full Stack Developer</h2>
-            <p>Build websites and applications from frontend to backend.</p>
+        <div class="links">
+            <a href="careerindex.html">Dashboard</a>
+            <a href="careeroptions.html" class="active">Careers</a>
+            <a href="#">Profile</a>
         </div>
 
-        <div class="career">
-            <h2>Data Analyst</h2>
-            <p>Analyze data and turn it into useful insights.</p>
-        </div>
+    </nav>
 
-        <div class="career">
-            <h2>Cloud Engineer</h2>
-            <p>Work with cloud platforms, servers and infrastructure.</p>
-        </div>
 
-        <div class="career">
-            <h2>UI/UX Designer</h2>
-            <p>Design websites and apps that are easy and enjoyable to use.</p>
-        </div>
+    <!-- Careers -->
 
-    </div>
+    <main class="careers-page">
 
- </body>
- </html>
+        <section class="page-header">
+
+            <p class="small-text">EXPLORE YOUR FUTURE</p>
+
+            <h1>Find a Career That Fits Your Path.</h1>
+
+            <p>
+                Explore different career opportunities and discover
+                what each path has to offer.
+            </p>
+
+        </section>
+
+
+        <section class="careers">
+
+            <!-- Career 1 -->
+
+            <div class="career-card">
+
+                <div class="career-icon">🤖</div>
+
+                <div class="career-content">
+
+                    <p class="career-category">TECHNOLOGY</p>
+
+                    <h2>AI / ML Engineer</h2>
+
+                    <p>
+                        Build intelligent systems using Python,
+                        machine learning and artificial intelligence.
+                    </p>
+
+                    <a href="#" class="view-button">
+                        View Career →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Career 2 -->
+
+            <div class="career-card">
+
+                <div class="career-icon">💻</div>
+
+                <div class="career-content">
+
+                    <p class="career-category">TECHNOLOGY</p>
+
+                    <h2>Full Stack Developer</h2>
+
+                    <p>
+                        Build websites and applications across
+                        frontend and backend technologies.
+                    </p>
+
+                    <a href="#" class="view-button">
+                        View Career →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Career 3 -->
+
+            <div class="career-card">
+
+                <div class="career-icon">📊</div>
+
+                <div class="career-content">
+
+                    <p class="career-category">DATA</p>
+
+                    <h2>Data Analyst</h2>
+
+                    <p>
+                        Analyze data and turn information into
+                        useful insights for better decisions.
+                    </p>
+
+                    <a href="#" class="view-button">
+                        View Career →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Career 4 -->
+
+            <div class="career-card">
+
+                <div class="career-icon">☁️</div>
+
+                <div class="career-content">
+
+                    <p class="career-category">TECHNOLOGY</p>
+
+                    <h2>Cloud Engineer</h2>
+
+                    <p>
+                        Work with cloud platforms, servers and
+                        modern infrastructure.
+                    </p>
+
+                    <a href="#" class="view-button">
+                        View Career →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Career 5 -->
+
+            <div class="career-card">
+
+                <div class="career-icon">🎨</div>
+
+                <div class="career-content">
+
+                    <p class="career-category">CREATIVE</p>
+
+                    <h2>UI/UX Designer</h2>
+
+                    <p>
+                        Design digital products that are useful,
+                        intuitive and enjoyable to use.
+                    </p>
+
+                    <a href="#" class="view-button">
+                        View Career →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>© 2026 PathWise. All rights reserved.</p>
+    </footer>
+<script>
+fetch("http://127.0.0.1:8000/careers")
+.then(response => response.json())
+.then(careers => {
+
+    const cards = document.querySelectorAll(".card");
+
+    careers.forEach((career, index) => {
+
+        if (cards[index]) {
+            cards[index].querySelector("h3, h2").textContent =
+                career.career_name;
+
+            cards[index].querySelector("p").textContent =
+                career.description;
+        }
+
+    });
+
+})
+.catch(error => {
+    console.error("Careers error:", error);
+});
+</script>
+</body>
+</html>

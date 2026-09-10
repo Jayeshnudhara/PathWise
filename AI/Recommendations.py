@@ -36,13 +36,3 @@ Keep it beginner-friendly and concise.
     return response.text
 
 
-career = "Frontend developer"
-
-skill_gaps = [
-    "react",
-    "javascript"
-]
-
-roadmap = generate_roadmap(career, skill_gaps)
-
-print(roadmap)
