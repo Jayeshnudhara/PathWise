@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PathWise | AI Roadmap</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .roadmap-card {
+            background: white;
+            border: 1px solid #e2eae2;
+            border-radius: 18px;
+            padding: 35px;
+            box-shadow: 0 8px 25px rgba(40, 70, 40, 0.05);
+            white-space: pre-wrap;
+            line-height: 1.7;
+            color: #344334;
+        }
+
+        .loading {
+            color: #4f8f5b;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+
+    <div class="logo">
+        Path<span>Wise</span>
+    </div>
+
+    <div class="links">
+        <a href="careerindex.html">Dashboard</a>
+        <a href="careeroptions.html">Careers</a>
+        <a href="opportunities.html">Opportunities</a>
+        <a href="profile.html">Profile</a>
+    </div>
+
+</nav>
+
+
+<main class="dashboard">
+
+    <section class="welcome">
+
+        <p class="small-text">AI CAREER MENTOR</p>
+
+        <h1>
+            Your <span>AI Roadmap.</span>
+        </h1>
+
+        <p class="intro">
+            Get a personalized learning roadmap based on your career direction.
+        </p>
+
+    </section>
+
+
+    <section class="action-card">
+
+        <div class="icon">🤖</div>
+
+        <h2 id="careerTitle">Generating your roadmap...</h2>
+
+        <p id="status" class="loading">
+            PathWise AI is creating your personalized roadmap.
+        </p>
+
+    </section>
+
+
+    <br>
+
+
+    <section class="roadmap-card">
+
+        <div id="roadmap">
+            Please wait...
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>© 2026 PathWise. All rights reserved.</p>
+
+</footer>
+
+
+<script>
+
+const studentId = localStorage.getItem("student_id");
+
+
+// First get the student's assessment result
+fetch(`http://127.0.0.1:8000/assessment/${studentId}`)
+
+.then(response => response.json())
+
+.then(data => {
+
+    if (!data.career) {
+
+        document.getElementById("careerTitle").textContent =
+            "Complete your assessment first.";
+
+        document.getElementById("status").textContent =
+            "Take the career assessment to generate your roadmap.";
+
+        document.getElementById("roadmap").textContent =
+            "No career assessment found.";
+
+        return;
+
+    }
+
+
+    const career = data.career;
+
+    document.getElementById("careerTitle").textContent =
+        career;
+
+
+    // Call the AI roadmap API
+    return fetch("http://127.0.0.1:8000/roadmap", {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+
+            career: career,
+
+            skill_gaps: [
+                "Python",
+                "Problem Solving",
+                "Machine Learning"
+            ]
+
+        })
+
+    });
+
+})
+
+
+.then(response => {
+
+    if (!response) return null;
+
+    return response.json();
+
+})
+
+
+.then(data => {
+
+    if (!data) return;
+
+
+    document.getElementById("status").textContent =
+        "Your personalized roadmap is ready.";
+
+    document.getElementById("roadmap").textContent =
+        data.roadmap;
+
+})
+
+
+.catch(error => {
+
+    console.error("Roadmap error:", error);
+
+    document.getElementById("status").textContent =
+        "Unable to generate roadmap.";
+
+    document.getElementById("roadmap").textContent =
+        "Please make sure the PathWise backend is running.";
+
+});
+
+</script>
+
+</body>
+
+</html>
